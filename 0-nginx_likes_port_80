@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script installs Nginx (if not already installed), ensures it is configured to listen on port 80, and starts the Nginx service.
+
+# Update package list and install Nginx if not already installed
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Ensure Nginx is configured to listen on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80 default_server;/' /etc/nginx/sites-available/default
+sudo sed -i 's/listen \[::\]:80 default_server;/listen \[::\]:80 default_server;/' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the changes
+sudo systemctl restart nginx
+
+# Enable Nginx to start on boot
+sudo systemctl enable nginx
