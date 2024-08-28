@@ -1,3 +1,2 @@
 #!/bin/bash
-echo -e "##\n# User Database\n##"
-head -n 10 /etc/passwd
+head /etc/passwd
